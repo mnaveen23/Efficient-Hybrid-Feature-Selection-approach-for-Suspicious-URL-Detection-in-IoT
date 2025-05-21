@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficient Hybrid Feature Selection for Suspicious URL Detection in IoT</title>
+    <style>
+        /* Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: url('static/images/download3.gif') no-repeat center center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+            backdrop-filter: blur(3px);
+        }
+
+        /* Animated Header */
+        .header {
+            font-size: 2.5em;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        /* Navigation Buttons */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 14px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Button Hover Effects */
+        .button:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Color Variations */
+        .button-renewable-energy { border-color: #00c6ff; }
+        .button-predict { border-color: #2ed573; }
+        .button-about { border-color: #1e90ff; }
+        .button-logout { border-color: #ff4757; }
+
+        /* Glassmorphism Content Box */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .box {
+            width: 350px;
+            height: 220px;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+            transition: 0.3s;
+            color: white;
+            font-size: 1.1em;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            padding: 15px;
+            text-align: center;
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
+            position: absolute;
+            bottom: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        Efficient Hybrid Feature Selection for Suspicious URL Detection in IoT
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="button-container">
+        <a href="{{ url_for('phishing_url_detection') }}" class="button button-phishing_url_detection">Phishing Detection</a>
+        <a href="{{ url_for('index') }}" class="button button-predict">Predict</a>
+        <a href="{{ url_for('about') }}" class="button button-about">About Project</a>
+        <a href="{{ url_for('logout') }}" class="button button-logout">Logout</a>
+    </div>
+
+    <!-- Glassmorphism Content Boxes -->
+    <div class="content">
+        <div class="box">
+            <h3>Data Analysis</h3>
+            <p>Utilizing advanced analytics to process energy consumption data for optimization.</p>
+        </div>
+        <div class="box">
+            <h3>Prediction Model</h3>
+            <p>Machine Learning models for forecasting renewable energy production.</p>
+        </div>
+        <div class="box">
+            <h3>Community Impact</h3>
+            <p>Analyzing how optimized renewable energy usage benefits local communities.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2025 Efficient Hybrid Feature Selection for Suspicious URL Detection in IoT. All Rights Reserved.
+    </div>
+</body>
+</html>

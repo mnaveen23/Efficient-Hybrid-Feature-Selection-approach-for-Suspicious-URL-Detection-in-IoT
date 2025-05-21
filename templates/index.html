@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Identify the safety of a URL with AI-powered phishing detection.">
+    <meta name="keywords" content="phishing detection, cyber security, machine learning, URL safety">
+    <meta name="author" content="VAIBHAV BICHAVE">
+    
+    <title>Phishing URL Detection</title>
+
+    <!-- Bootstrap & FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        h2 {
+            font-size: 50px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        form {
+            width: 90%;
+            max-width: 500px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .form-control {
+            border-radius: 30px;
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background: #ff5733;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.4s;
+            box-shadow: 0 8px 20px rgba(255, 87, 51, 0.5);
+        }
+
+        .btn-primary:hover {
+            background: #ff2e00;
+            transform: scale(1.05);
+        }
+
+        #prediction {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .btn-danger, .btn-success {
+            border-radius: 30px;
+            padding: 10px 25px;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.4s;
+        }
+
+        .btn-danger:hover, .btn-success:hover {
+            transform: scale(1.05);
+        }
+
+        .back-dashboard {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        .back-dashboard:hover {
+            background: rgba(255,255,255,0.4);
+            color: black;
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Back to Dashboard Button -->
+    
+
+    <h2>🔍 Phishing URL Detection</h2>
+
+    <form action="/index" method="post">
+        <input type="text" class="form-control" name='url' id="url" placeholder="Enter URL to Check" required>
+        <button class="btn btn-primary" type="submit">Check URL</button>
+    </form>
+
+    <h6 class="mt-3">Analyzing: <a href="{{ url }}" target="_blank" class="text-warning">{{ url }}</a></h6>
+
+    <h3 id="prediction"></h3>
+
+    <button class="btn btn-danger d-none" id="button2" onclick="window.open('{{url}}')">⚠ Still Want to Continue?</button>
+    <button class="btn btn-success d-none" id="button1" onclick="window.open('{{url}}')">✅ Continue</button>
+
+    <!-- JavaScript -->
+    <script>
+        let x = '{{xx}}';
+        let num = x * 100;
+        if (0 <= x && x < 0.50) {
+            num = 100 - num;
+        }
+        let txtx = num.toFixed(2);
+        if (x <= 1 && x >= 0.50) {
+            document.getElementById("prediction").innerHTML = `⚠ Website is ${txtx}% unsafe to use...`;
+            document.getElementById("button2").classList.remove("d-none");
+            
+        } else if (0 <= x && x < 0.50) {
+            document.getElementById("prediction").innerHTML = `✅ Website is ${txtx}% safe to use...`;
+            document.getElementById("button1").classList.remove("d-none");
+        }
+    </script>
+<a href="/dashboard" class="back-dashboard"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+</body>
+</html>

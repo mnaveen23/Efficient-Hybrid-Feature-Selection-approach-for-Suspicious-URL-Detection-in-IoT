@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficient Hybrid Feature Selection for Suspicious URL Detection in IoT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+       body {
+            background-color: black; /* Fallback color */
+            background-image: url("{{ url_for('static', filename='images/fake-news-bg.jpg') }}"); /* Static image path */
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #ffffff; /* White background */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 50px auto;
+            color: black;
+        }
+
+        h1 {
+            text-align: center;
+            color: olive;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2em;
+            border: none;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .loading-indicator {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .loading-indicator img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .output-label {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #e74c3c;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color:white;
+        }
+
+        .footer a {
+            color:white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .dashboard-link {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .dashboard-btn {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.1em;
+            display: inline-block;
+            margin-top: 20px;
+            width: 30%;
+            text-align: center;
+        }
+
+        .dashboard-btn:hover {
+            background-color: #c0392b;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Application of Deep learning in Flood Prediction and Management</h1>
+    <form method="POST" action="/predict" onsubmit="showLoadingIndicator(event)">
+        
+        <!-- Input fields for flood prediction -->
+        <div class="input-group">
+            <label for="latitude">Latitude</label>
+            <input type="text" name="latitude" id="latitude" required step="any" placeholder="Enter latitude">
+        </div>
+
+        <div class="input-group">
+            <label for="longitude">Longitude</label>
+            <input type="text" name="longitude" id="longitude" required step="any" placeholder="Enter longitude">
+        </div>
+
+        <div class="input-group">
+            <label for="rainfall">Rainfall (mm)</label>
+            <input type="text" name="rainfall" id="rainfall" required step="any" placeholder="Enter rainfall in mm">
+        </div>
+
+        <div class="input-group">
+            <label for="temperature">Temperature (°C)</label>
+            <input type="text" name="temperature" id="temperature" required step="any" placeholder="Enter temperature in °C">
+        </div>
+
+        <div class="input-group">
+            <label for="humidity">Humidity (%)</label>
+            <input type="text" name="humidity" id="humidity" required step="any" placeholder="Enter humidity percentage">
+        </div>
+
+        <div class="input-group">
+            <label for="river_discharge">River Discharge (m³/s)</label>
+            <input type="text" name="river_discharge" id="river_discharge" required step="any" placeholder="Enter river discharge">
+        </div>
+
+        <div class="input-group">
+            <label for="water_level">Water Level (m)</label>
+            <input type="text" name="water_level" id="water_level" required step="any" placeholder="Enter water level in meters">
+        </div>
+
+        <div class="input-group">
+            <label for="elevation">Elevation (m)</label>
+            <input type="text" name="elevation" id="elevation" required step="any" placeholder="Enter elevation in meters">
+        </div>
+
+        <!-- Dropdown for Land Cover -->
+        <div class="input-group">
+            <label for="land_cover">Land Cover</label>
+            <select name="land_cover" id="land_cover" required>
+                <option value="">Select Land Cover Type</option>
+                <option value="forest">Forest</option>
+                <option value="urban">Urban</option>
+                <option value="grassland">Grassland</option>
+                <option value="wetland">Wetland</option>
+                <option value="water">Water</option>
+                <option value="agriculture">Agriculture</option>
+                <option value="barren">Barren</option>
+            </select>
+        </div>
+
+        <!-- Dropdown for Soil Type -->
+        <div class="input-group">
+            <label for="soil_type">Soil Type</label>
+            <select name="soil_type" id="soil_type" required>
+                <option value="">Select Soil Type</option>
+                <option value="sandy">Sandy</option>
+                <option value="clay">Clay</option>
+                <option value="loamy">Loamy</option>
+                <option value="peat">Peat</option>
+                <option value="saline">Saline</option>
+                <option value="chalk">Chalk</option>
+                <option value="rocky">Rocky</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="population_density">Population Density</label>
+            <input type="text" name="population_density" id="population_density" required step="any" placeholder="Enter population density">
+        </div>
+
+        <div class="input-group">
+            <label for="infrastructure">Infrastructure</label>
+            <input type="number" name="infrastructure" id="infrastructure" required step="any" placeholder="Enter infrastructure score">
+        </div>
+
+        <div class="input-group">
+            <label for="historical_floods">Historical Floods</label>
+            <input type="number" name="historical_floods" id="historical_floods" required placeholder="Enter historical floods (0 or 1)">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Predict Flood Occurrence</button>
+    </form>
+
+    <!-- Loading Indicator -->
+    <div class="loading-indicator">
+        <img src="https://i.gifer.com/7ajs.gif" alt="Loading...">
+    </div>
+
+    <!-- Output Label for Prediction Result -->
+    <div class="output-label" id="outputLabel"></div>
+</div>
+
+<div class="dashboard-link">
+    <a href="/dashboard" class="dashboard-btn">Go to Dashboard</a>
+</div>
+
+<div class="footer">
+    &copy; 2025 Application of Deep learning in Flood Prediction and Management in Indian Coastal Areas Project. All Rights Reserved.
+</div>
+
+<script>
+    function showLoadingIndicator(event) {
+        event.preventDefault();
+        document.querySelector('.loading-indicator').style.display = 'block';
+        event.target.submit();
+    }
+</script>
+
+</body>
+</html>

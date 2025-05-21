@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Prediction Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .result-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            max-width: 700px;
+            margin: 50px auto;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .result-container:hover {
+            transform: translateY(-10px);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .prediction {
+            font-size: 1.6em;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .prediction.success {
+            color: #27ae60;
+        }
+
+        .prediction.fail {
+            color: #e74c3c;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 30px;
+            font-size: 1.1em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.8em;
+            color: black;
+        }
+
+        .footer a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .recommendations {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .recommendations h3 {
+            color: #2c3e50;
+            font-size: 1.5em;
+        }
+
+        .recommendations ul {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .recommendations ul li {
+            margin-bottom: 10px;
+        }
+
+        .recommendations ul li::before {
+            content: "✔️";
+            margin-right: 10px;
+            color: #27ae60;
+        }
+
+        .recommendations.fail ul li::before {
+            content: "❌";
+            margin-right: 10px;
+            color: #e74c3c;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="result-container">
+    <h1>Flood Prediction Result</h1>
+    <p>Your prediction result is:</p>
+    
+    <!-- Prediction result handling -->
+    {% if prediction == 'Flood Occurred' %}
+        <p class="prediction fail">There is a high risk of flooding!</p>
+        <!-- Recommendations for flood risk -->
+        <div class="recommendations fail">
+            <h3>Recommendations to Mitigate Flood Risk:</h3>
+            <ul>
+                <li>Evacuate low-lying areas immediately if you live in a flood-prone zone.</li>
+                <li>Monitor weather updates and flood warnings through official channels.</li>
+                <li>Strengthen flood defenses (e.g., sandbags, flood barriers) if possible.</li>
+                <li>Move valuable and important documents to higher ground.</li>
+                <li>Prepare an emergency kit with essential supplies (e.g., water, medications, flashlight, etc.).</li>
+                <li>Secure your home and close all doors and windows tightly.</li>
+                <li>Follow evacuation orders and avoid walking or driving through floodwaters.</li>
+            </ul>
+        </div>
+    {% else %}
+        <p class="prediction success">No significant flood risk detected.</p>
+        <!-- Recommendations for no flood risk -->
+        <div class="recommendations">
+            <h3>Recommendations to Stay Prepared:</h3>
+            <ul>
+                <li>Stay informed about weather conditions, especially during the rainy season.</li>
+                <li>Inspect drainage systems regularly to prevent blockages that could lead to flooding.</li>
+                <li>Ensure your property is protected by flood barriers or flood-resistant landscaping.</li>
+                <li>Keep an emergency kit available, including essential supplies in case of future risks.</li>
+                <li>Continue to monitor flood prediction systems for any changes in the situation.</li>
+                <li>Encourage community awareness about flood risks and emergency preparedness.</li>
+                <li>If living near rivers or coastlines, make sure to have evacuation plans in place.</li>
+            </ul>
+        </div>
+    {% endif %}
+
+    <!-- Button to make another prediction -->
+    <a href="{{ url_for('predict') }}" class="button">Make Another Prediction</a>
+    <!-- Button to go back to the dashboard -->
+    <a href="{{ url_for('dashboard') }}" class="button">Go Back to Dashboard</a>
+</div>
+
+<div class="footer">
+    &copy; 2025 Flood Prediction and Management Project. All Rights Reserved. <br>
+    <a href="https://www.example.com/privacy-policy" target="_blank">Privacy Policy</a> | <a href="https://www.example.com/terms" target="_blank">Terms of Service</a>
+</div>
+
+</body>
+</html>
